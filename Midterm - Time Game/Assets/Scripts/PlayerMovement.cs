@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float moveSpeed = 120;
     public float jumpForce = 120;
+    public CharacterController2D controller; 
 
     public LayerMask layerGround;
     public float distRayCast = 0.6f;
@@ -20,10 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = true;
     }
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -47,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckIsOnGround()
     {
-        isOnGround = Physics2D.Raycast(transform.position, Vector2.down, distRayCast, layerGround.value); //Tira un raycast al suelo para saber si está en el piso o no
+        isOnGround = Physics2D.Raycast(transform.position, Vector2.down, distRayCast, layerGround.value); //Tira un raycast al suelo para saber si estï¿½ en el piso o no
         if (isOnGround && canJump == false)
         {
             canJump = true;
