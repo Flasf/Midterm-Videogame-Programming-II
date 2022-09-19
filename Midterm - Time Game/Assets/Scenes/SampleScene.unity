@@ -569,7 +569,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   distRayCast: 1
-  isOnGround: 0
+  isOnGround: 1
 --- !u!114 &1935794697
 MonoBehaviour:
   m_ObjectHideFlags: 0
