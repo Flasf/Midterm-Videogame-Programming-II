@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LogicaFullScreen : MonoBehaviour
 {
     public Toggle toggle;
-    public Dropdown resolucionesDropDown;
+    // public Dropdown resolucionesDropDown;
     Resolution[] resoluciones;
 
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class LogicaFullScreen : MonoBehaviour
     public void RevisarResolucion()
     {
         resoluciones = Screen.resolutions;
-        resolucionesDropDown.ClearOptions();
+        //resolucionesDropDown.ClearOptions();
         List<string> opciones = new List<string>();
         int resolucionActual = 0;
 
@@ -56,17 +56,17 @@ public class LogicaFullScreen : MonoBehaviour
                 resolucionActual = i;
             }
         }
-        resolucionesDropDown.AddOptions(opciones);
-        resolucionesDropDown.value = resolucionActual;
-        resolucionesDropDown.RefreshShownValue();
+        //resolucionesDropDown.AddOptions(opciones);
+        //resolucionesDropDown.value = resolucionActual;
+       // resolucionesDropDown.RefreshShownValue();
 
-        resolucionesDropDown.value = PlayerPrefs.GetInt("numeroResolucion", 0);
+        //resolucionesDropDown.value = PlayerPrefs.GetInt("numeroResolucion", 0);
 
     }
 
     public void CambiarResolucion(int indiceResolucion)
     {
-        PlayerPrefs.SetInt("numeroResolucion", resolucionesDropDown.value);
+        //PlayerPrefs.SetInt("numeroResolucion", resolucionesDropDown.value);
 
         Resolution resolucion = resoluciones[indiceResolucion];
         Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
