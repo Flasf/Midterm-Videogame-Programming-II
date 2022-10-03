@@ -15,21 +15,43 @@ public class PlayerMovement : MonoBehaviour
     public float distRayCast = 0.6f;
     public bool isOnGround;
 
+    private bool isMoving;
     private bool canJump = true;
+
+    private Animator playerAnimator;
 
     private void Awake()
     {
         canJump = true;
     }
-
+    void Start()
+    {
+        playerAnimator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         CheckIsOnGround();
         Jump();
-    }
 
+        
+        ChangeAnimationIfActionIsMade();
+
+
+    }
+    private void ChangeAnimationIfActionIsMade()
+    {
+        if (isMoving)
+        {
+            playerAnimator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsRunning", false);
+        }
+        //TODO: Buscar cómo poner el isMoving en false...
+    }
     private void FixedUpdate()
     {
         Move();
@@ -38,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector3(GetAxisDirectAsset("Move").x * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, 0);
+        isMoving = true;
     }
 
     private Vector2 GetAxisDirectAsset(string action)
@@ -66,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    
+
     private void OnDrawGizmos() //para mostrar el raycast de CheckIsOnGround
     {
         Gizmos.color = Color.yellow;
@@ -89,5 +112,5 @@ public class PlayerMovement : MonoBehaviour
         return inputAsset.FindActionMap("Player").FindAction(action).WasReleasedThisFrame();
     }
 
-
+    
 }
