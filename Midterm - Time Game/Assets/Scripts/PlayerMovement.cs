@@ -33,12 +33,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        //Jump();
     }
+
     private void Move()
     {
         rb.velocity = new Vector3(GetAxisDirectAsset("Move").x * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, 0);
     }
+
     private Vector2 GetAxisDirectAsset(string action)
     {
         return inputAsset.FindActionMap("Player").FindAction(action).ReadValue<Vector2>();
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    
     private void OnDrawGizmos() //para mostrar el raycast de CheckIsOnGround
     {
         Gizmos.color = Color.yellow;
