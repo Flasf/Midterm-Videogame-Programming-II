@@ -27,12 +27,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         CheckIsOnGround();
+        Jump();
     }
 
     private void FixedUpdate()
     {
         Move();
-        Jump();
+        //Jump();
     }
     private void Move()
     {
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckIsOnGround()
     {
-        isOnGround = Physics2D.Raycast(transform.position, Vector2.down, distRayCast, layerGround.value); //Tira un raycast al suelo para saber si est� en el piso o no
+        isOnGround = Physics2D.Raycast(transform.position, Vector2.down, distRayCast, layerGround.value); //Tira un raycast al suelo para saber si está en el piso o no
         if (isOnGround && canJump == false)
         {
             canJump = true;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isOnGround)
         {
+            
             if (GetKeyDown("Jump") && canJump)
             {
                 canJump = false;
