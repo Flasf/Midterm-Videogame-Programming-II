@@ -14,14 +14,8 @@ public class MenuManager : MonoBehaviour
 
     public void Juego1()
     {
-        SceneManager.LoadScene("Dino Run");
+        SceneManager.LoadScene("Game");
     }
-
-    public void Juego2()
-    {
-        SceneManager.LoadScene("FlappyBird - Game");
-    }
-
     public void Menu()
     {
         SceneManager.LoadScene("Menu Principal");
