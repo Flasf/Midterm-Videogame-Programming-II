@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector3(GetAxisDirectAsset("Move").x * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, 0);
+        rb.velocity = new Vector3(GetAxisDirectAsset("Move").x * moveSpeed * Time.unscaledDeltaTime, rb.velocity.y, 0);
         isMoving = true;
     }
 
