@@ -27,7 +27,7 @@ public class CamaraController : MonoBehaviour
 
         middleBackground.position += new Vector3(amountToMoveX * .5f, 0f, 0f);
 
-
         lastXPos = transform.position.x;
     }
 }
+ 

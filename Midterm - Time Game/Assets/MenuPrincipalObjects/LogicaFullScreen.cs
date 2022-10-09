@@ -36,6 +36,7 @@ public class LogicaFullScreen : MonoBehaviour
     {
         Screen.fullScreen = pantallaCompleta;
 
+
     }
 
     public void RevisarResolucion()
@@ -70,5 +71,6 @@ public class LogicaFullScreen : MonoBehaviour
 
         Resolution resolucion = resoluciones[indiceResolucion];
         Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
+        Debug.Log("Pantalla Completa");
     }
 }
