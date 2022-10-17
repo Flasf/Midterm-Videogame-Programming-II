@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trailRenderer;
-    
+
+    private GameObject[] players; 
 
     private Animator playerAnimator;
 
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -162,4 +164,24 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetBool("isFalling", true);
         }
     }
+
+    /*public void OnLevelWasLoaded(int level)
+    {
+        players = GameObject.FindGameObjectsWithTag("Player");
+        //players[1].SetActive(true);
+
+        if (players.Length > 1)
+        {
+            Destroy(players[1]);
+        }
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Menu Principal")
+        {
+            players[1].SetActive(false);
+            for (int i = 0; i < players.Length; i++)
+            {
+                Destroy(players[i]);
+            }
+        }
+    }*/
 }
