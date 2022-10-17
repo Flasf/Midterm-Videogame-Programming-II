@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
+    public AudioSource audioJump;
+
     //Note: serializeFiled let's us access private variables on Unity, yet it does not allow them to be used in other scripts
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -95,12 +98,14 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            audioJump.Play();
         }
         //this one allows us to jump higher by longer pressing  the button
         if (context.canceled && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+        
     }
     public void Move(InputAction.CallbackContext context)
     {
