@@ -4958,7 +4958,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1935794691}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5a64e56e71ed55c41a8ade8b5a390a7a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5082,10 +5082,10 @@ MonoBehaviour:
   moveSpeed: 200
   jumpForce: 250
   controller: {fileID: 1935794699}
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1175904763}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   layerGround:
     serializedVersion: 2
     m_Bits: 64
