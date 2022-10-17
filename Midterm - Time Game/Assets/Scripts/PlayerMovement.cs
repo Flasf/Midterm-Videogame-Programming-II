@@ -25,15 +25,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask layerGround;
     public float distRayCast = 0.6f;
     public bool isOnGround;
-
-    private bool isMoving;
-    private bool canJump = true;
+    
 
     private Animator playerAnimator;
 
     private void Awake()
     {
-        canJump = true;
+        
     }
     void Start()
     {
@@ -55,12 +53,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2 (rb.velocity.x, jumpPower);
         }
-        //this one allows us to jump higher by pressing longer the button
+        //this one allows us to jump higher by longer pressing  the button
         if (Input.GetButtonUp("Jump") && rb.velocity.y>0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y *0.5f);
         }
 
+        
 
     }
     private bool IsGrounded()
@@ -85,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ChangeAnimationIfActionIsMade()
     {
-        if (isMoving)
+        if (horizontal != 0f)
         {
             playerAnimator.SetBool("IsRunning", true);
         }
@@ -93,7 +92,21 @@ public class PlayerMovement : MonoBehaviour
         {
             playerAnimator.SetBool("IsRunning", false);
         }
-        //TODO: Buscar cómo poner el isMoving en false...
+
+        if(rb.velocity.y == 0f)
+        {
+            playerAnimator.SetBool("isJumping", false);
+            playerAnimator.SetBool("isFalling", false);
+        }
+        else if(rb.velocity.y > 0f)
+        {
+            playerAnimator.SetBool("isJumping", true);
+        }
+        else if(rb.velocity.y < 0f)
+        {
+            playerAnimator.SetBool("isJumping", false);
+            playerAnimator.SetBool("isFalling", true);
+        }
     }
     
     /*
@@ -116,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
         {
             canJump = true;
         }
-    }*/
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -133,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*
+    
     private void Jump()
     {
         if (isOnGround)
