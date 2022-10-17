@@ -5,11 +5,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public InputActionAsset inputAsset;
+    public InputActionAsset inputAsset;//no
     public Rigidbody2D rb;
     public float moveSpeed = 120;
-    public float jumpForce = 120;
-    public CharacterController2D controller; 
+    public float jumpForce = 120;//no
+    public CharacterController2D controller;//no
+
+    private float horizontal;
+    private float speed = 8f;
+    private bool isFacingRight = true;
+    private float jumpPower = 16;
+
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+
+
+
 
     public LayerMask layerGround;
     public float distRayCast = 0.6f;
@@ -32,13 +43,45 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckIsOnGround();
-        Jump();
+        horizontal = Input.GetAxis("Horizontal");
+        //CheckIsOnGround();
+        //Jump();
 
-        
+        Flip();
+
         ChangeAnimationIfActionIsMade();
 
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2 (rb.velocity.x, jumpPower);
+        }
+        //this one allows us to jump higher by pressing longer the button
+        if (Input.GetButtonUp("Jump") && rb.velocity.y>0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y *0.5f);
+        }
 
+
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+    private void FixedUpdate()
+        {
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            //Move();
+        }
+    
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0 || !isFacingRight && horizontal > 0)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
     }
     private void ChangeAnimationIfActionIsMade()
     {
@@ -52,17 +95,15 @@ public class PlayerMovement : MonoBehaviour
         }
         //TODO: Buscar cómo poner el isMoving en false...
     }
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
+    
+    /*
     private void Move()
     {
         rb.velocity = new Vector3(GetAxisDirectAsset("Move").x * moveSpeed * Time.unscaledDeltaTime, rb.velocity.y, 0);
+        
         isMoving = true;
     }
-
+    
     private Vector2 GetAxisDirectAsset(string action)
     {
         return inputAsset.FindActionMap("Player").FindAction(action).ReadValue<Vector2>();
@@ -75,8 +116,24 @@ public class PlayerMovement : MonoBehaviour
         {
             canJump = true;
         }
+    }*/
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6) //layer 6 is ground
+        {
+            canJump = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer != 6) //layer 6 is ground
+        {
+            canJump = false;
+        }
     }
 
+    /*
     private void Jump()
     {
         if (isOnGround)
@@ -110,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
     private bool GetKeyUp(string action)
     {
         return inputAsset.FindActionMap("Player").FindAction(action).WasReleasedThisFrame();
-    }
+    }*/
 
     
 }

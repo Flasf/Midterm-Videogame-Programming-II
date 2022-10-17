@@ -5082,6 +5082,10 @@ MonoBehaviour:
   moveSpeed: 200
   jumpForce: 250
   controller: {fileID: 1935794699}
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   layerGround:
     serializedVersion: 2
     m_Bits: 64
