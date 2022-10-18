@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private int speed;
-    
+
+    public Rigidbody2D rb;
 
     void Start()
     {

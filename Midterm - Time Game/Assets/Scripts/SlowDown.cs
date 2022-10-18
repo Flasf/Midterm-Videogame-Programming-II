@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlowDown : MonoBehaviour
 {
+    public GameObject dimBackground;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +17,12 @@ public class SlowDown : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             Time.timeScale = .2f;
+            dimBackground.SetActive(true);
         }
         else if (Input.GetKeyUp(KeyCode.Q))
         {
             Time.timeScale = 1;
+            dimBackground.SetActive(false);
         }
     }
 }

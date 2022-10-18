@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trailRenderer;
 
-    private GameObject[] players; 
+    private GameObject[] players;
+    
 
     private Animator playerAnimator;
 
