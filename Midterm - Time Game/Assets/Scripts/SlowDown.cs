@@ -7,10 +7,10 @@ public class SlowDown : MonoBehaviour
 {
     public GameObject dimBackground;
 
-    private bool canSlowTime = true;
-    private bool isSlowingTime;
-    private float slowingTime_LimitTime = 1f;
-    private float slowingTimeCooldown = 2f;
+    //private bool canSlowTime = true;
+    //private bool isSlowingTime;
+    //private float slowingTime_LimitTime = 1f;
+    //private float slowingTimeCooldown = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,15 +37,15 @@ public class SlowDown : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Button pressed");
-            canSlowTime = true;
+            //Debug.Log("Button pressed");
+            //canSlowTime = true;
             Time.timeScale = .2f;
             dimBackground.SetActive(true);
             StartCoroutine(SlowTimeCoroutime(context.duration));
         }
         else if (context.canceled)
         {
-            canSlowTime = false;
+            //canSlowTime = false;
             Time.timeScale = 1;
             dimBackground.SetActive(false);
         }
