@@ -19,7 +19,7 @@ public class SlowDown : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
@@ -31,7 +31,7 @@ public class SlowDown : MonoBehaviour
             Time.timeScale = 1;
             dimBackground.SetActive(false);
         }
-    }
+    }*/
     
     public void SlowTime(InputAction.CallbackContext context)
     {
@@ -41,7 +41,7 @@ public class SlowDown : MonoBehaviour
             //canSlowTime = true;
             Time.timeScale = .2f;
             dimBackground.SetActive(true);
-            StartCoroutine(SlowTimeCoroutime(context.duration));
+            //StartCoroutine(SlowTimeCoroutime(context.duration));
         }
         else if (context.canceled)
         {
@@ -50,7 +50,7 @@ public class SlowDown : MonoBehaviour
             dimBackground.SetActive(false);
         }
     }
-    
+    /*
     private IEnumerator SlowTimeCoroutime(double time)
     {
         canSlowTime = false;
@@ -64,5 +64,5 @@ public class SlowDown : MonoBehaviour
         yield return new WaitForSeconds(slowingTimeCooldown);
         canSlowTime = true;
         //tengo que poner StopCoroutine?
-    }
+    }*/
 }
