@@ -5884,6 +5884,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e2a854d0-20c8-4260-990a-9490ebf03294
     m_ActionName: Player/ActivateDash[/Keyboard/shift,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1935794702}
+        m_TargetAssemblyTypeName: SlowDown, Assembly-CSharp
+        m_MethodName: SlowTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5585d52c-4e20-4847-84a2-d78afb12f644
+    m_ActionName: Player/SlowTime[/Keyboard/q,/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
