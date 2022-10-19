@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "SlowTime",
-                    "type": "Button",
-                    "id": "5585d52c-4e20-4847-84a2-d78afb12f644",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -322,28 +313,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ActivateDash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fa36eaa4-3e88-41e0-9cc3-32afd448be03",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SlowTime",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7d8b6670-3562-48e0-8428-ee7adb13ff4d",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SlowTime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
