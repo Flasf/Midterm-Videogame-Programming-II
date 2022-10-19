@@ -37,6 +37,7 @@ public class SlowDown : MonoBehaviour
     {
         if (context.performed)
         {
+            Debug.Log("Button pressed");
             canSlowTime = true;
             Time.timeScale = .2f;
             dimBackground.SetActive(true);
