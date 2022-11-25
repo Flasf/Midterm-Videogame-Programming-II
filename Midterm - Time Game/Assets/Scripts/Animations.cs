@@ -6,6 +6,7 @@ public class Animations : MonoBehaviour
 {
     private Animator playerAnimator;
 
+    public bool deletemepls = false;
 
     // Start is called before the first frame update
     void Start()
