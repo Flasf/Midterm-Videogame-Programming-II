@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class CollectCoins : MonoBehaviour
 {
+    public AudioClip coinSound; // Assign the coin sound clip in the Inspector
+    public AudioSource audioSource;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //audioSource = GetComponent<AudioSource>();
+        //audioSource.clip = coinSound;
     }
 
     // Update is called once per frame
@@ -19,6 +24,10 @@ public class CollectCoins : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            // Play the coin sound when the player collects the coin
+            
+            audioSource.Play();
+
             // Destroy the coin when the player enters the trigger
             Destroy(gameObject);
         }
