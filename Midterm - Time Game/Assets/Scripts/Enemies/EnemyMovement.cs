@@ -41,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        
     }
 }
 
